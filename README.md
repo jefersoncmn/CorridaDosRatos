@@ -14,11 +14,10 @@ Tabela de conteúdos
 
 ### Sobre
 
-![](https://github.com/jefersoncmn/CorridaDosRatos/blob/main/Github/corridadosratos.gif)
 
 <div align="center">
 	<p>Em desenvolvimento</p>
-  <p>Corrida dos Ratos é um jogo inspirado em SimCity. Com a camera que apresentará uma cidade onde o jogador poderá comprar ações das empresas. O objetivo do jogador é alcançar a liberdade financeira, fazendo boas escolhas e estratégias. A parte de financas é inspirada nos conhecimentos da obra Pai Rico, Pai Pobre."
+  <p>Corrida dos Ratos é um jogo inspirado em SimCity. Com a camera que apresentará uma cidade onde o jogador poderá comprar ações das empresas. O objetivo do jogador é alcançar a liberdade financeira, fazendo boas escolhas e estratégias. A parte de financas é inspirada nos conhecimentos da obra Pai Rico, Pai Pobre.
 </div>
 
 ### Estudo

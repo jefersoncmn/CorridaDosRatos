@@ -14,6 +14,7 @@ Tabela de conteúdos
 
 ### Sobre
 
+![](https://github.com/jefersoncmn/CorridaDosRatos/blob/main/GitHub/corridaDosRatos.gif)
 
 <div align="center">
 	<p>Em desenvolvimento</p>

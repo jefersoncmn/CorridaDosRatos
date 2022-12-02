@@ -13,14 +13,14 @@ public class FinanceManager : MonoBehaviour
     public event OnUpdateFinanceValues OnUpdateFinance;
 
     private void Start() {
-        finance = this.gameObject.AddComponent(typeof(Finance)) as Finance;
-        finance.SetFinance(100,120,100);
+        // finance = this.gameObject.AddComponent(typeof(Finance)) as Finance;
+        // finance.SetFinance(100,120,100);
 
     }
 
     public void UpdateValues(){
-        finance.Payment();
-        OnUpdateFinance?.Invoke(finance);
+        // finance.Payment();
+        // OnUpdateFinance?.Invoke(finance);
     }
 
 }

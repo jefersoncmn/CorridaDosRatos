@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Income : MonoBehaviour
+public class Income
 {
     public string description;
     public double value;

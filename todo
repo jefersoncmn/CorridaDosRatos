@@ -1,0 +1,14 @@
+[X] Cagerrar os Scriptable objects
+[X] Tela de escolher sonho
+[X] Criar nome do usuário
+[ ] Criação do personagem
+    [ ] Gerar dividas e perfil
+[ ] Sistema de turnos
+[ ] Comprar ações
+[ ] Vender ações
+
+- Instanciar construções
+- gerar ações de cada uma
+- criar o jogador ( escolher sonho, gerar vida e emprego)
+- O jogador tenha habilidades que possa upar
+    - Habilidade de (Acionista de poder: Tem mais 10% de chance que escutem suas dicas em relação a empresa, seja na estratégia, produtos e serviços vendidos, como é vendido, como é o layout da loja, abrir filial, onde será a nova filial)

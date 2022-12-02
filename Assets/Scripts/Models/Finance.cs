@@ -2,22 +2,25 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Finance : MonoBehaviour
+public class Finance
 {
     [SerializeField]
     double money;
     [SerializeField]
-    double totalIncome;
-    [SerializeField]
-    double totalExpenses;
-    [SerializeField]
-    double payDay;
-    [SerializeField]
-    string jobName;
+    JobObject job;
 
     List<Expense> expenses = new List<Expense>(); //Lista de gastos
     List<Income> incomes = new List<Income>(); //Lista de ganhos (trabalho/Investimentos/Dividentos/Aluguel/Negócios/Renda Fixa)
-    List<Asset> Assets = new List<Asset>(); //Lista de ações
+    List<Asset> assets = new List<Asset>(); //Lista de ações
+
+    public Finance(double money, JobObject job, List<Expense> expenses, List<Income> incomes, List<Asset> assets)
+    {
+        this.money = money;
+        this.job = job;
+
+        UpdateTotalIncome();
+        UpdateTotalExpenses();
+    }
 
     public void SetFinance(double money, double totalIncome, double totalExpenses){
         this.money = money;
@@ -31,11 +34,21 @@ public class Finance : MonoBehaviour
     }
 
     double GetTotalIncome(){
-        return totalIncome;
+        double calculatedTotalIncome = 0;
+        foreach (var income in incomes)
+        {
+            calculatedTotalIncome += income.value;
+        }
+        return calculatedTotalIncome;
     }
 
     double GetTotalExpenses(){
-        return totalExpenses;
+        double calculatedTotalExpenses = 0;
+        foreach (var expense in expenses)
+        {
+            calculatedTotalExpenses  += income.value;
+        }
+        return calculatedTotalExpenses ;
     }
 
     void SetMoney(double money){
@@ -88,8 +101,5 @@ public class Finance : MonoBehaviour
         SetMoney(GetMoney()+this.payDay);
     }
 
-    void GenerateLife(){
-        //Random Work
-        //Random expenses
-    }
+    
 }

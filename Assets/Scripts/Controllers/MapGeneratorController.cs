@@ -2,34 +2,23 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+// public GameObject[] cellmap;
+
+//     public GameObject cellmodel;
+
+//     public GameObject map;
+
+//     private int mapCellsQuantityX = 25;
+//     private int mapCellsQuantityZ = 25;
+//     private float cellSizeX = 0.5f;
+//     private float cellSizeZ = 0.5f;
+
 /// <summary>
 /// Classe responsavel por ser o estado que irá gerar o mapa para simulação dos algoritmos de busca
 /// </summary>
 public class MapGeneratorController : MonoBehaviour
 {
-
     public GameObject[] cellmap;
-
-    public GameObject cellmodel;
-
-    public GameObject map;
-
-    private int mapCellsQuantityX = 25;
-    private int mapCellsQuantityZ = 25;
-    private float cellSizeX = 0.5f;
-    private float cellSizeZ = 0.5f;
-
-
-    void Awake(){
-        map = GameObject.Find("Map");
-
-        //Get cellModel size
-        cellSizeX = cellmodel.transform.localScale.x;
-        cellSizeZ = cellmodel.transform.localScale.z;
-
-        int quantity = mapCellsQuantityX * mapCellsQuantityZ;
-        cellmap = new GameObject[quantity];
-    }
 
     Cell referenciaMatriz, auxiliarColuna, auxiliarLinha, ponteiroFixoA, ponteiroFixoB, ponteiroMovelA, ponteiroMovelB, referenciaAtual;
 
@@ -38,16 +27,18 @@ public class MapGeneratorController : MonoBehaviour
     /// </summary>
     /// <param name="columns">Quantidade de colunas</param>
     /// <param name="lines">Quantidade de linhas</param>
-    public void spawnPaths()
-    {
-        int columns = mapCellsQuantityX;
-        int lines = mapCellsQuantityZ;
+    public void spawnPaths(int columns, int lines, GameObject cellmodel)
+    {   
+        GameObject map;
+        map = GameObject.Find("Map");
 
+        int sizeMap = columns * lines;
+        cellmap = new GameObject[sizeMap];
         int i = 0;
 
         for (int x = 0; x < columns; x++)
         {
-            referenciaAtual = createCell(i, x, 0);
+            referenciaAtual = createCell(i, x, 0, map, cellmodel);
             i++;
 
             if (referenciaMatriz == null)
@@ -66,7 +57,7 @@ public class MapGeneratorController : MonoBehaviour
 
             for (int z = 0; z < lines - 1; z++)
             {
-                referenciaAtual = createCell(i, x, z + 1);
+                referenciaAtual = createCell(i, x, z + 1, map, cellmodel);
                 i++;
 
                 referenciaAtual.left = auxiliarLinha;
@@ -112,18 +103,16 @@ public class MapGeneratorController : MonoBehaviour
     /// <param name="x">variavel da posição x</param>
     /// <param name="z">variavel da posição z</param>
 
-    Cell createCell(int index, int x, int z)
+    Cell createCell(int index, int x, int z, GameObject map, GameObject cellmodel)
     {
 
-        cellmap[index] = Instantiate(cellmodel, new Vector3(x*cellSizeX, 0, z*cellSizeZ), Quaternion.identity);//intancia um bloco
+        cellmap[index] = Instantiate(cellmodel, new Vector3(x, 0, z), Quaternion.identity);//intancia um bloco
         cellmap[index].transform.SetParent(map.transform, false);
         cellmap[index].gameObject.AddComponent(typeof(Cell));//Coloca a classe Cell no bloco
         Cell cell = cellmap[index].GetComponent(typeof(Cell)) as Cell;//Pega a classe Cell que foi colocada no bloco (feita na linha anterior)
         cell.cellObject = cellmap[index];//E dentro da classe Cell define o gameObject pra ele saber quem é o objeto dele
-        
-        // generalController.cellmap[index] = cellmap[index];//Armazena os objetos na classe GeneraController
-        // defineTerrain(generalController.cellmap[index]);//Define o tipo de terreno
-        defineTerrain(cellmap[index]);
+        cellmap[index] = cellmap[index];//Armazena os objetos na classe GeneraController
+        defineTerrain(cellmap[index]);//Define o tipo de terreno
 
         return cell;
     }
@@ -172,40 +161,4 @@ public class MapGeneratorController : MonoBehaviour
 
     }
 
-    /// <summary>
-    /// Função que deletará a celula do mapa
-    /// </summary>
-    /// <param name="cell">Objeto da celula a ser deletada</param>
-    void deleteCellInTheMap(GameObject cell)
-    {
-        Cell cellclass = cell.gameObject.GetComponent<Cell>() as Cell;
-
-        Cell ponteiro;
-
-        if (cellclass.right != null)
-        {
-            ponteiro = cellclass.right;
-            ponteiro.left = null;
-        }
-
-        if (cellclass.left != null)
-        {
-            ponteiro = cellclass.left;
-            ponteiro.right = null;
-        }
-
-        if (cellclass.up != null)
-        {
-            ponteiro = cellclass.up;
-            ponteiro.down = null;
-        }
-
-        if (cellclass.down != null)
-        {
-            ponteiro = cellclass.down;
-            ponteiro.up = null;
-        }
-
-        Destroy(cell);
-    }
 }

@@ -2,8 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Expense
+public class PlayerActionsController : MonoBehaviour
 {
-    public string description;
-    public double value;
+    
 }

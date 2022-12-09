@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-[CreateAssetMenu(fileName = "Dream", menuName = "Dream")]
+[CreateAssetMenu(fileName = "Dream", menuName = "Scriptables/Dream")]
 public class DreamObject : ScriptableObject
 {
     public string description;

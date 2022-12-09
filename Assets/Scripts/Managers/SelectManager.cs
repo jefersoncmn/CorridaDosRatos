@@ -5,18 +5,23 @@ using UnityEngine;
 public class SelectManager : MonoBehaviour
 {
     [SerializeField] private string selectableTag = "Selectable";
-    [SerializeField] private Material highlightMaterial;
-    [SerializeField] private Material defaultMaterial;
+    // [SerializeField] private Material highlightMaterial;
+    // [SerializeField] private Material defaultMaterial;
     public float timeSelected = 0f;
     private Transform _selection;
+
+    [SerializeField] 
+    public delegate void OnSelectedItemHandler(GameObject selectedProperty);
+    [SerializeField] 
+    public event OnSelectedItemHandler OnSelectedItem;
+    
     
     void Update()
     {
-        
         SelectItem();
     }
 
-    void SelectItem(){
+    private void SelectItem(){
         if(Input.touchCount == 1){
             Touch touch = Input.GetTouch(0);
             timeSelected += Time.deltaTime;//Start add time
@@ -31,10 +36,9 @@ public class SelectManager : MonoBehaviour
             
                     RaycastHit hit;
                     if(Physics.Raycast(ray, out hit)){
-                        var selection = hit.transform;
-                        var selectionRenderer = selection.GetComponent<Renderer>();
-                        if(selectionRenderer != null && selection.tag == selectableTag){
-                            selectionRenderer.material = highlightMaterial;
+                        var selection = hit.transform.gameObject;
+                        if(selection.tag == selectableTag){
+                            OnSelectedItem?.Invoke(selection);
                         }
                     }
                 }

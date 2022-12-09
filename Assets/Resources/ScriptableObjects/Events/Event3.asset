@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2eccea7fc99da6d458f4cb50dd4769a0, type: 3}
+  m_Name: Event3
+  m_EditorClassIdentifier: 
+  eventName: "Infla\xE7\xE3o"
+  description: "O estado imprimiu dinheiro, agora o dinheiro est\xE1 desvalorizado.
+    Todas as contas aumentam."
+  sprite: {fileID: 21300000, guid: 36b3ccfbd0823b743a59c4566763c3ec, type: 3}
+  answer: "Tempos dif\xEDceis est\xE3o por vir."
+  chance: 0.01

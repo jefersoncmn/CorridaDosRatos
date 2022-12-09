@@ -27,8 +27,8 @@ public class WindowGraph : MonoBehaviour
         dashTemplateY = graphContainer.Find("dashTemplateY").GetComponent<RectTransform>();
         gameObjectList = new List<GameObject>();
 
-        List<int> valueList = new List<int>() { 5, 98, 56, 45, 30, 22, 17, 15, 13, 17, 25, 37, 40, 36, 33, 50, 30, 60, 50, 40, 20, 5, 20, 10, 50, 30, 20, 11 };
-        ShowGraph(valueList, -1, (int _i) => "Day " + (_i + 1), (float _f) => "$" + Mathf.RoundToInt(_f));//Define o texto que acompanha os valores
+        // List<int> valueList = new List<int>() { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 37, 40, 36, 33, 50, 30, 60, 50, 40, 20, 5, 20, 10, 50, 30, 20, 11 };
+        // ShowGraph(valueList, -1, (int _i) => "Day " + (_i + 1), (float _f) => "$" + Mathf.RoundToInt(_f));//Define o texto que acompanha os valores
     }
     
     /// <summary>
@@ -37,7 +37,7 @@ public class WindowGraph : MonoBehaviour
     /// <param name="valueList">Valores</param>
     /// <param name="getAxisLabelX">Descrição da cordenada X</param>
     /// <param name="getAxisLabelY">Descrição da cordenada y</param>
-    private void ShowGraph(List<int> valueList, int maxVisibleValueAmount = -1, Func<int, string> getAxisLabelX = null, Func<float, string> getAxisLabelY = null){
+    public void ShowGraph(List<float> valueList, int maxVisibleValueAmount = -1, Func<int, string> getAxisLabelX = null, Func<float, string> getAxisLabelY = null){
         if (getAxisLabelX == null) {
             getAxisLabelX = delegate (int _i) { return _i.ToString(); };
         }
@@ -61,7 +61,7 @@ public class WindowGraph : MonoBehaviour
         float yMinimum = valueList[0];
         
         for (int i = Mathf.Max(valueList.Count - maxVisibleValueAmount, 0); i < valueList.Count; i++) {
-            int value = valueList[i];
+            float value = valueList[i];
             if (value > yMaximum) {
                 yMaximum = value;
             }
@@ -150,7 +150,7 @@ public class WindowGraph : MonoBehaviour
     private GameObject CreateDotConnection(Vector2 dotPositionA, Vector2 dotPositionB) {
         GameObject gameObject = new GameObject("dotConnection", typeof(Image));//Cria o objeto
         gameObject.transform.SetParent(graphContainer, false);
-        gameObject.GetComponent<Image>().color = new Color(1, 1, 1, .5f);
+        gameObject.GetComponent<Image>().color = new Color(0, 0, 0, .5f);
 
         RectTransform rectTransform = gameObject.GetComponent<RectTransform>();
 

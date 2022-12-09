@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2eccea7fc99da6d458f4cb50dd4769a0, type: 3}
+  m_Name: Event4
+  m_EditorClassIdentifier: 
+  eventName: Sem problemas
+  description: "Esse m\xEAs n\xE3o aconteceu nada"
+  sprite: {fileID: 21300000, guid: 75a74f47007fe3243a16267c1e0320db, type: 3}
+  answer: "M\xF3 paz"
+  chance: 0

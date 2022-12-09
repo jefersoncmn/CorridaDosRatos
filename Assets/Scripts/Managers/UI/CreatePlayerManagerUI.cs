@@ -10,7 +10,7 @@ public class CreatePlayerManagerUI : MonoBehaviour
     public SelectDreamPanelController selectDreamPanelController;
     public CreatePlayerNameController createPlayerNameController;
 
-    public PlayerGoalsManager playerGoalsManager;
+    public PlayerManager playerManager;
 
     void Awake()
     {
@@ -31,9 +31,15 @@ public class CreatePlayerManagerUI : MonoBehaviour
     }
 
     public void EndPlayerCreation(){
-        playerGoalsManager.playerDream = selectDreamPanelController.selectedDream;
-        playerGoalsManager.playerName = createPlayerNameController.playerName;
+        // playerManager.CreatePlayer("test", selectDreamPanelController.selectedDream);
         SceneManager.LoadScene("Game");
+        //TODO forma de escrever pelo celular
+        /*
+        if(createPlayerNameController.playerName != string.Empty){
+            playerManager.CreatePlayer(createPlayerNameController.playerName, selectDreamPanelController.selectedDream);
+            SceneManager.LoadScene("Game");
+        }
+        */
     }
 
 }

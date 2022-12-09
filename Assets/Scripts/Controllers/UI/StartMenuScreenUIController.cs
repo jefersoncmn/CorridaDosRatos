@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class StartMenuScreenManagerUI : MonoBehaviour
+public class StartMenuScreenUIController : MonoBehaviour
 {
     public GameObject startMenuScreen;
 

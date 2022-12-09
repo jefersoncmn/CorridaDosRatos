@@ -1,11 +1,26 @@
 [X] Cagerrar os Scriptable objects
 [X] Tela de escolher sonho
 [X] Criar nome do usuário
-[ ] Criação do personagem
-    [ ] Gerar dividas e perfil
+[X] Criação do personagem
+    [X] Gerar dividas e perfil
+[ ] Sistema de Eventos
+    - Os eventos vão ser feitos no controller, e no controller Ui, a partir daí o controller vai emitir para o PlayerManager por Events.
+    [X] Mostrar os eventos
+    [ ] Eventos afetarem no jogo
+[ ] Sistema de ações
+    - StocsController irá carregar as empresas do mapa e irá gerar as acoes delas
 [ ] Sistema de turnos
-[ ] Comprar ações
-[ ] Vender ações
+    [X] Ao apertar no botão de avançar turnos atualizar dados
+    [ ] Controle de ações do jogador
+        [ ] Comprar ações
+        [ ] Vender ações
+
+
+//Prioridade
+
+- O player controler tem que ter uma forma de se conectar com o TurnCOntroller e assim atualizar os dados de grana do jogador
+    
+- Fazer o jogador comprar e vender ações 
 
 - Instanciar construções
 - gerar ações de cada uma

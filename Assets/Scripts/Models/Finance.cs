@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+[System.Serializable]
 public class Finance
 {
     [SerializeField]
@@ -12,29 +12,25 @@ public class Finance
     List<Expense> expenses = new List<Expense>(); //Lista de gastos
     List<Income> incomes = new List<Income>(); //Lista de ganhos (trabalho/Investimentos/Dividentos/Aluguel/Negócios/Renda Fixa)
     List<Asset> assets = new List<Asset>(); //Lista de ações
+    
 
     public Finance(double money, JobObject job, List<Expense> expenses, List<Income> incomes, List<Asset> assets)
     {
         this.money = money;
         this.job = job;
-
-        UpdateTotalIncome();
-        UpdateTotalExpenses();
-    }
-
-    public void SetFinance(double money, double totalIncome, double totalExpenses){
-        this.money = money;
-        this.totalIncome = totalIncome;
-        this.totalExpenses = totalExpenses;
-        UpdatePayDay();
+        this.expenses = expenses;
+        this.incomes = incomes;
+        this.incomes.Add(new Income(job.wage, job.jobName));
+        this.assets = assets;
     }
 
     public double GetMoney(){
         return money;
     }
 
-    double GetTotalIncome(){
+    public double GetTotalIncome(){
         double calculatedTotalIncome = 0;
+
         foreach (var income in incomes)
         {
             calculatedTotalIncome += income.value;
@@ -42,64 +38,55 @@ public class Finance
         return calculatedTotalIncome;
     }
 
-    double GetTotalExpenses(){
+    public double GetTotalExpenses(){
         double calculatedTotalExpenses = 0;
         foreach (var expense in expenses)
         {
-            calculatedTotalExpenses  += income.value;
+            calculatedTotalExpenses  += expense.value;
         }
         return calculatedTotalExpenses ;
     }
 
-    void SetMoney(double money){
+    public void SetMoney(double money){
         this.money = money;
     }
 
-    public void UpdatePayDay(){
-        this.payDay = this.totalIncome - this.totalExpenses;
+    public double GetPayDay(){
+        return GetTotalIncome() - GetTotalExpenses();
     }
 
-    void AddExpense(Expense expense){
-        expenses.Add(expense);
-        UpdateTotalExpenses();
+    public void AddExpense(Expense expense){
+        this.expenses.Add(expense);
     }
 
-    void RemoveExpense(Expense expense){
-        expenses.Remove(expense);
-        UpdateTotalExpenses();
+    public void AddAsset(Asset asset){
+        this.assets.Add(asset);
     }
 
-    void AddIncome(Income income){
-        incomes.Add(income);
-        UpdateTotalIncome();
+    public void RemoveAsset(Asset asset){
+        this.assets.Remove(asset);
     }
 
-    void RemoveIncome(Income income){
-        incomes.Remove(income);
-        UpdateTotalIncome();
-    }
-    
-    void UpdateTotalIncome(){
-        double calculatedIncome = 0;
-        foreach (var income in incomes)
-        {
-            calculatedIncome += income.value;
-        }
-        this.totalIncome =  calculatedIncome;
+    public void RemoveExpense(Expense expense){
+        this.expenses.Remove(expense);
     }
 
-    void UpdateTotalExpenses(){
-        double calculatedExpenses = 0;
-        foreach (var expense in expenses)
-        {
-            calculatedExpenses += expense.value;
-        }
-        this.totalExpenses =  calculatedExpenses;
+    public void AddIncome(Income income){
+        this.incomes.Add(income);
     }
 
-    public void Payment(){
-        SetMoney(GetMoney()+this.payDay);
+    public void RemoveIncome(Income income){
+        this.incomes.Remove(income);
     }
 
+    public List<Asset> GetAssets(){
+        return assets;
+    }
+    public List<Expense> GetExpenses(){
+        return expenses;
+    }
+    public List<Income> GetIncomes(){
+        return incomes;
+    }
     
 }

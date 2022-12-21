@@ -18,6 +18,8 @@ Tabela de conteúdos
 
 https://user-images.githubusercontent.com/51566081/207204699-7648d310-2d8b-4af0-8199-56bac6fde761.mp4
 
+Esse jogo é inspirado no jogo [CashFlow Classic](https://www.richdad.com/products/cashflow-classic#:~:text=CASHFLOW%20Classic%20is%20the%20free,by%20doing%20the%20real%20thing.) e também no jogo [Capitalism 2](https://store.steampowered.com/app/638200/Capitalism_2/?l=portuguese).
+
 [Download Versão em desenvolvimento](https://drive.google.com/drive/folders/1k27tsVY2NNkkgMMzeuW8Vv_M15eKPBhB)
 
 <div align="center">
